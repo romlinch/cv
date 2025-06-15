@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Romain Chartier</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.4;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+            color: white;
+            padding: 40px;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transform: translate(50px, -50px);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .name {
+            font-size: 2.5em;
+            font-weight: 300;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .title {
+            font-size: 1.3em;
+            font-weight: 400;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            font-size: 0.95em;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .contact-icon {
+            width: 16px;
+            height: 16px;
+            fill: currentColor;
+            opacity: 0.8;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            padding: 40px;
+        }
+
+        .left-column {
+            padding-right: 20px;
+        }
+
+        .right-column {
+            padding-left: 20px;
+            border-left: 3px solid #e8f4f8;
+        }
+
+        .section {
+            margin-bottom: 35px;
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 8px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            border-radius: 2px;
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+
+        .job-title, .degree {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .company, .school {
+            font-weight: 500;
+            color: #3498db;
+            margin-bottom: 5px;
+        }
+
+        .period {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .description ul {
+            margin-left: 15px;
+            margin-top: 5px;
+        }
+
+        .description li {
+            margin-bottom: 5px;
+        }
+
+        .skills-grid {
+            display: grid;
+            gap: 15px;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+        }
+
+        .skill-category h4 {
+            color: #2c3e50;
+            font-size: 1em;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-tag {
+            background: #e8f4f8;
+            color: #2c3e50;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        .languages {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #e74c3c;
+        }
+
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .language-level {
+            background: #e74c3c;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            font-weight: 500;
+        }
+
+        .certifications {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #27ae60;
+        }
+
+        .cert-item {
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .cert-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .cert-name {
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .cert-org {
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+
+        /* Page 2 styles */
+        .page-2 {
+            page-break-before: always;
+            padding: 40px;
+        }
+
+        .projects-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .project-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #9b59b6;
+        }
+
+        .project-title {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 5px;
+        }
+
+        .project-tech {
+            color: #9b59b6;
+            font-size: 0.9em;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        @media print {
+            body {
+                background: white;
+                font-size: 11px;
+                line-height: 1.3;
+            }
+            .page {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                min-height: auto;
+                page-break-after: always;
+            }
+            .page-2 {
+                page-break-before: always;
+                page-break-after: auto;
+            }
+            .header {
+                padding: 20px 30px;
+                page-break-inside: avoid;
+            }
+            .name {
+                font-size: 1.8em;
+                margin-bottom: 3px;
+            }
+            .title {
+                font-size: 1.1em;
+                margin-bottom: 15px;
+            }
+            .contact-info {
+                gap: 15px;
+                font-size: 0.85em;
+            }
+            .main-content {
+                padding: 25px 30px;
+                gap: 25px;
+            }
+            .left-column {
+                padding-right: 15px;
+            }
+            .right-column {
+                padding-left: 15px;
+            }
+            .section {
+                margin-bottom: 20px;
+                page-break-inside: avoid;
+            }
+            .section-title {
+                font-size: 1.2em;
+                margin-bottom: 12px;
+                padding-bottom: 5px;
+            }
+            .experience-item, .education-item {
+                margin-bottom: 15px;
+                padding: 12px;
+            }
+            .job-title, .degree {
+                font-size: 1em;
+                margin-bottom: 3px;
+            }
+            .company, .school {
+                margin-bottom: 3px;
+            }
+            .period {
+                font-size: 0.85em;
+                margin-bottom: 8px;
+            }
+            .description {
+                font-size: 0.9em;
+                line-height: 1.4;
+            }
+            .description ul {
+                margin-left: 12px;
+                margin-top: 3px;
+            }
+            .description li {
+                margin-bottom: 3px;
+            }
+            .skills-grid {
+                gap: 10px;
+            }
+            .skill-category {
+                padding: 10px;
+            }
+            .skill-category h4 {
+                font-size: 0.9em;
+                margin-bottom: 6px;
+            }
+            .skill-tags {
+                gap: 5px;
+            }
+            .skill-tag {
+                padding: 2px 8px;
+                font-size: 0.8em;
+            }
+            .languages, .certifications {
+                padding: 10px;
+            }
+            .language-item {
+                margin-bottom: 6px;
+            }
+            .language-level {
+                font-size: 0.75em;
+            }
+            .page-2 {
+                padding: 25px 30px;
+            }
+            .projects-grid {
+                gap: 12px;
+            }
+            .project-item {
+                padding: 12px;
+                page-break-inside: avoid;
+            }
+            .project-title {
+                font-size: 1em;
+                margin-bottom: 3px;
+            }
+            .project-tech {
+                font-size: 0.85em;
+                margin-bottom: 8px;
+            }
+            .header::before {
+                display: none;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .right-column {
+                border-left: none;
+                border-top: 3px solid #e8f4f8;
+                padding-left: 0;
+                padding-top: 20px;
+            }
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- PAGE 1 -->
+    <div class="page">
+        <header class="header">
+            <div class="header-content">
+                <h1 class="name">Romain Chartier</h1>
+                <h2 class="title">System Architect</h2>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        Montesquieu-Lauragais, France
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                        +33 6 67 91 60 82
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24">
+                            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        romain.chartier@posteo.net
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="left-column">
+                <section class="section">
+                    <h3 class="section-title">Profil Professionnel</h3>
+                    <p class="description">
+                        System Architect avec 11 années d'expertise dans la conception d'architectures logicielles SaaS. Spécialisé dans l'optimisation d'infrastructure, la modernisation technologique et l'intégration d'IA. Approche collaborative métier-technique pour concevoir des solutions scalables, sécurisées et performantes.
+                    </p>
+                </section>
+
+                <section class="section">
+                    <h3 class="section-title">Expérience Professionnelle</h3>
+                    
+                    <div class="experience-item">
+                        <h4 class="job-title">System Architect</h4>
+                        <div class="company">Cegedim - Éditeur logiciel secteur santé</div>
+                        <div class="period">2017 - Présent</div>
+                        <div class="description">
+                            <ul>
+                                <li>Architecture microservices multi-langages (Python, Spring, Node.js) pour produits SaaS critiques</li>
+                                <li>Gateway centralisée (Spring Cloud Gateway) avec gestion Keycloak et CDN S3/Single SPA</li>
+                                <li>Frameworks techniques Python et Spring (2.7, 3.3, 3.4) pour standardisation développement</li>
+                                <li>Innovation IA : agents Crew.ai pour automatisation tests UI et migrations code (Spring 2.7→3.4, React)</li>
+                                <li>Infrastructure IA interne : LLM Ollama sur GPU pour assistance développeurs, audit sécurité Oasis</li>
+                                <li>Optimisation coûts infrastructure via fine-tuning JVM et Kubernetes + métriques Prometheus</li>
+                                <li>Chaîne sécurité complète : Dependency Track et Harbor pour suivi proactif CVE</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <h4 class="job-title">Architecte Solution</h4>
+                        <div class="company">Atos - Services numériques</div>
+                        <div class="period">2014 - 2017</div>
+                        <div class="description">
+                            <ul>
+                                <li><strong>Auxylium :</strong> OS Android custom (AOSP), backend voix innovant, antennes 4G privées. Livraison sous contraintes extrêmes (Coupe du Monde Rugby)</li>
+                                <li><strong>CNES :</strong> Site institutionnel</li>
+                                <li><strong>Sécurité Mobile :</strong> Solutions d'obfuscation code application Android/iOS</li>
+                                <li><strong>Renault :</strong> Architecture stack Android embarquée Twizy</li>
+                                <li>Expertise transverse : PKI, Docker/Swarm, CI/CD, IPVS</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h3 class="section-title">Formation</h3>
+                    
+                    <div class="education-item">
+                        <h4 class="degree">Diplôme d'Ingénieur</h4>
+                        <div class="school">ENSEIRB - École Nationale Supérieure d'Électronique, Informatique, Télécommunications, Mathématique et Mécanique de Bordeaux</div>
+                        <div class="period">2003 - 2006</div>
+                        <div class="description">Spécialisation : Réseaux et Systèmes Répartis</div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="right-column">
+                <section class="section">
+                    <h3 class="section-title">Compétences</h3>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4>Architecture & Design</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Microservices</span>
+                                <span class="skill-tag">API Design</span>
+                                <span class="skill-tag">Event-Driven</span>
+                                <span class="skill-tag">Spring Cloud</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>Langages & Frameworks</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">Java/Spring</span>
+                                <span class="skill-tag">Node.js</span>
+                                <span class="skill-tag">Linux Expert</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>Cloud & Orchestration</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">AWS</span>
+                                <span class="skill-tag">Azure</span>
+                                <span class="skill-tag">Kubernetes</span>
+                                <span class="skill-tag">Docker</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>Données & Messaging</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">PostgreSQL</span>
+                                <span class="skill-tag">MongoDB</span>
+                                <span class="skill-tag">Redis</span>
+                                <span class="skill-tag">Elasticsearch</span>
+                                <span class="skill-tag">Kafka</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>DevOps & Automation</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">GitLab CI</span>
+                                <span class="skill-tag">Jenkins</span>
+                                <span class="skill-tag">Terraform</span>
+                                <span class="skill-tag">Ansible</span>
+                                <span class="skill-tag">ArgoCD</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>Intelligence Artificielle</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Crew.ai</span>
+                                <span class="skill-tag">Ollama</span>
+                                <span class="skill-tag">LLM</span>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h4>Sécurité</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Keycloak</span>
+                                <span class="skill-tag">Vault</span>
+                                <span class="skill-tag">PKI</span>
+                                <span class="skill-tag">Harbor</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h3 class="section-title">Langues</h3>
+                    <div class="languages">
+                        <div class="language-item">
+                            <span>Français</span>
+                            <span class="language-level">Natif</span>
+                        </div>
+                        <div class="language-item">
+                            <span>Anglais</span>
+                            <span class="language-level">Courant</span>
+                        </div>
+                        <div class="language-item">
+                            <span>Allemand</span>
+                            <span class="language-level">Scolaire</span>
+                        </div>
+                        <div class="language-item">
+                            <span>Japonais</span>
+                            <span class="language-level">Débutant</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- PAGE 2 -->
+    <div class="page page-2">
+        <section class="section">
+            <h3 class="section-title">Projets Significatifs</h3>
+            <div class="projects-grid">
+                <div class="project-item">
+                    <h4 class="project-title">Infrastructure IA & Agents Intelligents</h4>
+                    <div class="project-tech">Crew.ai • Ollama • LLM • GPU Computing</div>
+                    <div class="description">
+                        Intégration d'agents IA pour automatisation tests UI et migrations code. Infrastructure IA interne avec LLM Ollama sur GPU pour assistance développeurs. Migration automatisée Java Spring 2.7→3.4 et modernisation React.
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <h4 class="project-title">Auxylium - OS Android Custom</h4>
+                    <div class="project-tech">AOSP • Android • 4G • Backend Voix</div>
+                    <div class="description">
+                        OS Android complet à partir sources AOSP avec backend voix innovant et antennes 4G privées. Livraison contraintes temporelles extrêmes pour Coupe du Monde Rugby.
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <h4 class="project-title">Architecture Microservices</h4>
+                    <div class="project-tech">Spring Cloud Gateway • Keycloak • S3 CDN • Single SPA</div>
+                    <div class="description">
+                        Architecture microservices avec gateway centralisée, gestion autorisation Keycloak et CDN S3. Solution scalable base de l'ensemble des produits SaaS.
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <h4 class="project-title">Optimisation Infrastructure</h4>
+                    <div class="project-tech">Kubernetes • Prometheus • JVM • GitOps</div>
+                    <div class="description">
+                        Optimisation coûts via fine-tuning JVM et Kubernetes, pilotée par Prometheus. Pipelines GitOps avec ArgoCD pour déploiements automatisés.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3 class="section-title">Réalisations Clés</h3>
+            <div class="description">
+                <ul>
+                    <li><strong>Innovation IA :</strong> Pionnier intégration agents IA pour automatisation développement et modernisation code legacy</li>
+                    <li><strong>Architecture :</strong> Microservices scalables secteur santé</li>
+                    <li><strong>Performance :</strong> Optimisation coûts infrastructure et amélioration performances par monitoring</li>
+                    <li><strong>Leadership :</strong> Accompagnement équipes avec frameworks et outils productivité</li>
+                    <li><strong>Sécurité :</strong> Chaînes sécurité complètes avec audit vulnérabilités</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3 class="section-title">Intérêts & Veille Technologique</h3>
+            <div class="description">
+                <p><strong>Intelligence Artificielle :</strong> Laboratoire personnel GPU pour expérimentation et apprentissage continu</p>
+                <p><strong>Infrastructure :</strong> Domotique complète auto-hébergée, expertise systèmes distribués</p>
+                <p><strong>Sports :</strong> Course à pied, ski, bodyboard, tennis de table</p>
+                <p><strong>Veille :</strong> IA, cloud-native, architectures émergentes</p>
+            </div>
+        </section>
+
+        <section class="section">
+            <h3 class="section-title">Références</h3>
+            <div class="description">
+                <p>Références professionnelles disponibles sur demande</p>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
